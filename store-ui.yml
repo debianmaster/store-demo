@@ -1,0 +1,32 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: store-ui
+    version: v1
+  name: store-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: store-ui
+      version: v1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: store-ui
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: products_svc
+          value: http://products:8080
+        - name: inventory_svc
+          value: http://inventory:8080
+        image: coolcompany/store-fe
+        name: store-ui
+        resources: {}
+status: {}

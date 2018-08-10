@@ -1,0 +1,36 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: store
+    version: v1
+  name: productsdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: store
+      version: v1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: store
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: MONGODB_ADMIN_PASSWORD
+          value: password
+        - name: MONGODB_USER
+          value: app_user
+        - name: MONGODB_DATABASE
+          value: store
+        - name: MONGODB_PASSWORD
+          value: password
+        image: centos/mongodb-32-centos7
+        name: productsdb
+        resources: {}
+status: {}
