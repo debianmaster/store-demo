@@ -9,11 +9,9 @@ metadata:
 spec:
   ports:
   - port: 8080
-    protocol: TCP
-    targetPort: 8080
+    name: http
   selector:
     app: store-ui
-    version: v1
   type: NodePort
 status:
   loadBalancer: {}
