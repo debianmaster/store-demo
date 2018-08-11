@@ -1,0 +1,30 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: products
+    version: reccomendation
+  name: products-reccomendation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: products
+      version: reccomendation
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: products
+        version: reccomendation
+    spec:
+      containers:
+      - env:
+        - name: mongo_url
+          value: mongodb://app_user:password@productsdb/store
+        image: coolcompany/products-recco
+        name: products
+        resources: {}
+status: {}

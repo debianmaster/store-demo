@@ -1,0 +1,34 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: products
+    version: v1
+  name: products
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: products
+      version: v1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: products
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: products_svc
+          value: http://products:8080
+        - name: inventory_svc
+          value: http://inventory:8080
+        - name: mongo_url
+          value: mongodb://app_user:password@productsdb/store
+        image: coolcompany/store-products
+        name: products
+        resources: {}
+status: {}

@@ -1,0 +1,27 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: recommendations
+    version: v1
+  name: recommendations
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recommendations
+      version: v1 
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: recommendations
+        version: v1
+    spec:
+      containers:
+        - image: coolcompany/store-reccomendations
+          name: recommendations
+          resources: {}
+status: {}

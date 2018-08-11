@@ -3,9 +3,7 @@ kind: Namespace
 metadata:
   labels:
     istio-injection: enabled
-  name: store
+  name: bi
 spec:
   finalizers:
   - kubernetes
-status:
-  phase: Active

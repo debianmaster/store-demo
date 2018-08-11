@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: recommendations
+  name: recommendations
+spec:
+  ports:
+  - port: 8080
+    name: http
+  selector:
+    app: recommendations
+status:
+  loadBalancer: {}
